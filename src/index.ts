@@ -1,6 +1,6 @@
 import app from './app';
-import dotenv from 'dotenv';
 import { createDbConnection } from './config/databaseConfig';
+import dotenv from 'dotenv';
 
 dotenv.config();
 
