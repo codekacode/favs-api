@@ -1,3 +1,4 @@
+import { getAllUsersService } from './../services/getAllUsersService';
 import { ApplicationError } from './../../shared/customErrors/ApplicationError';
 import { logger } from './../../shared/logger/appLogger';
 import { NextFunction, Request, Response } from "express";
