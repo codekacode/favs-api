@@ -1,3 +1,5 @@
+import { createToken } from './../utils/tokenManager';
+import { createUserService } from './../services/createUserService';
 import { getOneUserByIdService } from './../services/getOneUserByIdService';
 import { CreateUser } from './../entity/types/User';
 import { getAllUsersService } from './../services/getAllUsersService';
@@ -29,6 +31,20 @@ export const getUserById = async (
     try {
         const user = await getOneUserByIdService(id);
         res.status(200).json({ data: user });
+    } catch (error) {
+        next(error);
+    }
+}
+
+export const createUser = async (
+    req: Request<{}, {}, CreateUser>,
+    res: Response,
+    next: NextFunction
+) => {
+    try {
+        const newUser = await createUserService(req.body);
+        const token = createToken({ id: newUser.id });
+        res.status(200).json({ data: token });
     } catch (error) {
         next(error);
     }
