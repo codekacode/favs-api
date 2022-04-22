@@ -6,6 +6,7 @@ import { getAllUsersService } from './../services/getAllUsersService';
 import { ApplicationError } from './../../shared/customErrors/ApplicationError';
 import { logger } from './../../shared/logger/appLogger';
 import { NextFunction, Request, Response } from "express";
+import { deleteUserService } from '../services/deleteUserService';
 
 
 export const getUsers = async (
@@ -49,3 +50,24 @@ export const createUser = async (
         next(error);
     }
 }
+
+export const editUser = (req: Request, res: Response) => {
+    const newUser: CreateUser = req.body;
+    const { id } = req.params;
+    res.status(200).json();
+};
+
+export const deleteUser = async (
+    req: Request,
+    res: Response,
+    next: NextFunction
+) => {
+    const { id } = req.params;
+    try {
+        await deleteUserService(id);
+        res.status(200).json({ data: [], message: 'User deleted successfully'});
+    } catch (error: any) {
+        next(new ApplicationError(400, error.message));
+    }
+}
+
