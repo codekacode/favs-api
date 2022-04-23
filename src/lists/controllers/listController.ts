@@ -17,11 +17,11 @@ export const getLists = async (req: Request, res: Response) => {
 };
 
 export const getListById = async (
-    req: Request<{ list_id: string }>,
+    req: Request<{ id: string }>,
     res: Response
 ) => {
     try {
-        const getListById = await getListByIdService(req.params.list_id);
+        const getListById = await getListByIdService(req.params.id);
         res.status(200).json(getListById);
     } catch (error: any) {
         logger.error('Error obtener lista por ID')
@@ -45,11 +45,11 @@ export const createList = async (
 }
 
 export const deleteList = async (
-    req: Request<{ list_id: string }>,
+    req: Request<{ id: string }>,
     res: Response
 ) => {
     try {
-        const list = await deleteListByIdService(req.params.list_id);
+        const list = await deleteListByIdService(req.params.id);
         res.status(204).json(list);
     } catch (error) {
         logger.error('Error eliminar lista')

@@ -1,6 +1,17 @@
-import { List } from './../types/listInterface';
+import { List, Fav } from './../types/listInterface';
 import { Schema } from 'mongoose';
 
+export const FavSchema = new Schema<Fav>({
+    title: {
+        type: String,
+    },
+    description: {
+        type: String,
+    },
+    link: {
+        type: String,
+    }
+})
 
 export const ListSchema = new Schema<List>({
     list_name: {
@@ -13,5 +24,6 @@ export const ListSchema = new Schema<List>({
     },
     editedAt: {
         type: Date
-    }
+    },
+    favs: [FavSchema],
 })
