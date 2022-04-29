@@ -6,7 +6,7 @@ import { TokenModel } from './../entity/model/authTokenModel';
 
 export const authCreateRefreshToken = async (
     userId: string | UserIdType
-) => {
+): Promise<any> => {
     try {
         const refreshToken = createRefreshToken({ id: userId });
         const token = new TokenModel({
