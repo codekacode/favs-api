@@ -8,7 +8,7 @@ const router: Router = Router();
 
 router.get('/users', getUsers);
 router.post('/users',userValidationMiddleware, createUser);
-router.post('/login', userLogin);
+// router.post('/login', userLogin);
 router.put('/users/:id', editUser);
 router.delete('/users/:id', deleteUser);
 
